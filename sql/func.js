@@ -11,12 +11,9 @@ var pool  = mysql.createPool( {
 
 module.exports = {
   connPool (sql, val, cb) {
-    debugger
     pool.getConnection((err, conn) => {
         let q = conn.query(sql, val, (err, rows) => {
-            if (err) {
-                console.log(err);
-            }
+            if (err) console.log(err);
             console.log('asdsad', rows)
             cb(err, rows);
             conn.release();

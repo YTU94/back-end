@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql      = require('mysql');
 let index = require('../controls/index');
+let func = require('../sql/func');
 var pool  = mysql.createPool( {
   connectionLimit : 50,
   host            : 'localhost',
@@ -11,12 +12,8 @@ var pool  = mysql.createPool( {
  multipleStatements : true  //是否允许执行多条sql语句
 });
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
-// router.get('/all', index.getAll)
+
 router.get('/a', function(req, res, next) {
   pool.getConnection((err, conn) => {
     if(err) console.log(err)
@@ -28,6 +25,13 @@ router.get('/a', function(req, res, next) {
     })
   })
   // res.render('index', { title: 'Express' });
+});
+
+router.get('/all', index.getAll)
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
