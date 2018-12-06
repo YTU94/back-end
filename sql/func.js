@@ -1,24 +1,17 @@
 const mysql = require('mysql');
-// const db = require('../config/db');
-var pool  = mysql.createPool( {
-  connectionLimit : 50,
-  host            : 'localhost',
-  user            : 'root',
-  password    : '261011',
-  database     : 'test',
- multipleStatements : true  //是否允许执行多条sql语句
-});
+const db = require('../config/db');
+const pool  = mysql.createPool(db);
 
 module.exports = {
-  connPool (sql, val, cb) {
+  connPool (res ,sql, val, cb) {
     pool.getConnection((err, conn) => {
-        let q = conn.query(sql, val, (err, rows) => {
-            if (err) console.log(err);
-            console.log('asdsad', rows)
-            cb(err, rows);
-            conn.release();
-        });
-    });
+      if(err) console.log(err)
+      conn.query(sql, val, (err, response) => {
+        if(err) console.log(err)
+        cb(err, response)
+        conn.release()
+      })
+    })
   },
   // json格式
   writeJson(res, code = 200, msg = 'ok', data = null) {

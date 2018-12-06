@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var articleRouter = require('./routes/article');
+
 
 var app = express();
 
@@ -38,34 +40,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// var mysql      = require('mysql');
-// var connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'root',
-//   password : '261011',
-//   database : 'test'
-// });
- 
-// connection.connect();
- 
-// connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-//   if (error) throw error;
-//   console.log('The solution is: ', results[0].solution);
-// });
-// var pool  = mysql.createPool( {
-//        connectionLimit : 50,
-//        host            : 'localhost',
-//        user            : 'root',
-//        password    : '261011',
-//        database     : 'test',
-//       multipleStatements : true  //是否允许执行多条sql语句
-//   });
-//   pool.getConnection((err, conn) => {
-//     if(err) console.log(err)
-//     conn.query('SELECT 1 + 1 AS solution', '', (err, res) => {
-//       console.log('asdsad', res)
-//       conn.release()
-//       if(err) return
-//     })
-//   })
 module.exports = app;

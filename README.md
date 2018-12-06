@@ -4,17 +4,19 @@
 借用express框架搭建的后端服务，不提供前端页面，实现前后端分离(算不上真正的前后端分离，项目比较小(#^.^#))，主要提供接口服务.
 
 ## 功能
-[x] 数据的增删改查
+- [x] 数据库的连接
+- [x] sql语句进行增删该查
+
 
 ## 结构
 .
-+-- config 配置文件
-+-- controls 控制器
-+-- public 静态文件
-+-- routers 路由
-+-- sql 数据库sql语句
-+-- views 视图层（用不到）
-+-- app.js 启动文件
++ config 配置文件
++ controls 控制器
++ public 静态文件
++ routers 路由
++ sql 数据库sql语句
++ views 视图层（用不到）
++ app.js 启动文件
 
 ## 使用
 > 请先安装好node,mysql

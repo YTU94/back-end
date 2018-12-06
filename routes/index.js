@@ -8,10 +8,9 @@ var pool  = mysql.createPool( {
   host            : 'localhost',
   user            : 'root',
   password    : '261011',
-  database     : 'test',
+  database     : 'blog',
  multipleStatements : true  //是否允许执行多条sql语句
 });
-
 
 
 router.get('/a', function(req, res, next) {
@@ -28,6 +27,7 @@ router.get('/a', function(req, res, next) {
 });
 
 router.get('/all', index.getAll)
+router.get('/test', index.test)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
