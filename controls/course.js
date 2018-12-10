@@ -1,19 +1,15 @@
 let func = require('../sql/func');
+let sql = require('../sql/sql.js');
 
 module.exports = {
   getCouseList (req, res) {
-    func.connPool(res, `SELECT * FROM ?? limit ${req.query.page}, ${req.query.pageSize}`, 'course', (err, rows) => {
+    func.connPool(res, sql.queryByPage, ['course', parseInt(req.query.page), parseInt(req.query.page_size)], (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
   },
   getCouseInfo (req, res) {
-    func.connPool(res, `SELECT * FROM ?? WHERE id = ${req.body.id}`, 'course_info', (err, rows) => {
+    func.connPool(res, sql.queryById, ['course_info', req.body.id], (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
-    })
-  },
-  test(req, res) {
-    func.connPool(res, 'SELECT * FROM `wp_posts` WHERE id > 1', '', rows => {
-      res.json({code: 200, msg: 'ok', data: rows})
     })
   }
 }

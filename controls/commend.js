@@ -3,7 +3,7 @@ let sql = require('../sql/sql.js');
 
 module.exports = {
   getVideoCommendList (req, res) {
-    func.connPool(res, sql.queryByPage, ['video_commend', req.body.pageNum, re1.page.pageSize], (err, rows) => {
+    func.connPool(res, 'SELECT * FROM ?? WHERE video_id=? LIMIT ?, ?', ['video_commend',req.body.videoId, req.body.page, req.body.page_size], (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
   },
@@ -13,7 +13,7 @@ module.exports = {
     })
   },
   getCourseCommendList (req, res) {
-    func.connPool(res, sql.queryByPage, ['course_commend', req.body.pageNum, re1.page.pageSize], (err, rows) => {
+    func.connPool(res, 'SELECT * FROM ?? WHERE course_id=? LIMIT ?, ?', ['course_commend',req.body.courseId, req.body.pageNum, re1.page.pageSize], (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
   },

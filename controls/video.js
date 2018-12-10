@@ -9,6 +9,9 @@ module.exports = {
   },
   getVideoInfo (req, res) {
     func.connPool(res, sql.queryById, ['videos', req.body.id], (err, rows) => {
+      if (rows && rows.length === 1) {
+        rows = rows[0]
+      }
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
   }
