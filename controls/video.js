@@ -3,7 +3,7 @@ let sql = require('../sql/sql.js');
 
 module.exports = {
   getVideoList (req, res) {
-    func.connPool(res, 'SELECT * FROM ?? WHERE courseId=?', ['videos', req.body.courseId], (err, rows) => {
+    func.connPool(res,  sql.queryByKey, ['videos', 'course_id', req.body.courseId], (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
   },
