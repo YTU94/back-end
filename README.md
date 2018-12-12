@@ -26,7 +26,7 @@
 + sql 数据库sql语句
   - func.js 封装mysql连接池
   - sql.js sql语句
-+ views 视图层（用不到）
++ views 视图层（暂时用不到）
 + app.js 启动文件
 
 ## 使用
