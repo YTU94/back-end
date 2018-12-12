@@ -1,4 +1,4 @@
-> 一个node后端项目
+> 一个node后端项目,主要配合[meedu-wxapp](https://github.com/YTU94/meedu-wxapp),也可以自己用于其他项目。
 
 ## 简介
 借用express框架搭建的后端服务，不提供前端页面，实现前后端分离(算不上真正的前后端分离，项目比较小(#^.^#))，主要提供接口服务.
@@ -6,6 +6,7 @@
 ## 功能
 - [x] 数据库的连接
 - [x] sql语句进行增删该查
+- [x] 提供api服务
 
 ## api
 + [课程接口](./api/课程接口.md)
@@ -36,6 +37,9 @@
 npm install
 // 本地启动
 npm start
+
+// 服务器使用pm2 启动
+pm2 start ./bin/www
 ```
 
 ## 配置
