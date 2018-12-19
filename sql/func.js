@@ -6,7 +6,6 @@ module.exports = {
   connPool (res ,sql, val, cb) {
     pool.getConnection((err, conn) => {
       if(err) console.log(err)
-      console.log(sql, val)
       conn.query(sql, val, (err, response) => {
         console.log('连接池的 response', response)
         if(err) console.log(err)
