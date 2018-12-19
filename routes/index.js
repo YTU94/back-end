@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 let article = require('../controls/article');
-let index = require('../controls/index');
 let course = require('../controls/course');
 let video = require('../controls/video');
 let commend = require('../controls/commend');
@@ -24,9 +23,6 @@ router.post('/course/commendList', commend.getCourseCommendList)
 router.post('/course/commendInfo', commend.getCourseCommendInfo)
 router.post('/video/commendList', commend.getVideoCommendList)
 router.post('/video/commendInfo', commend.getVideoCommendInfo)
-
-router.get('/all', index.getAll)
-router.get('/test', index.test)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
