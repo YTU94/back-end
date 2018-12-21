@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2018 年 12 月 12 日 10:03
+-- 生成日期: 2018 �?12 �?21 �?03:09
 -- 服务器版本: 5.7.24
 -- PHP 版本: 5.6.27
 
@@ -30,14 +30,14 @@ CREATE TABLE IF NOT EXISTS `article` (
   `id` int(10) NOT NULL,
   `title` varchar(50) CHARACTER SET utf8 NOT NULL,
   `content` varchar(5000) CHARACTER SET utf8 NOT NULL,
-  `type_id` int(10) NOT NULL
+  `sort_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- 转存表中的数据 `article`
 --
 
-INSERT INTO `article` (`id`, `title`, `content`, `type_id`) VALUES
+INSERT INTO `article` (`id`, `title`, `content`, `sort_id`) VALUES
 (1, 'dsfsd', '更符合法规回复', 1);
 
 -- --------------------------------------------------------
@@ -134,13 +134,25 @@ INSERT INTO `course_info` (`id`, `name`, `title`, `infoText`, `avatar`, `videos`
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(10) NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `balance` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `videos`
 --
 
 CREATE TABLE IF NOT EXISTS `videos` (
   `id` int(10) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `courseId` int(10) NOT NULL,
+  `course_id` int(10) NOT NULL,
   `createTime` datetime NOT NULL,
   `viewNum` int(10) NOT NULL,
   `info` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -153,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `videos` (
 -- 转存表中的数据 `videos`
 --
 
-INSERT INTO `videos` (`id`, `name`, `courseId`, `createTime`, `viewNum`, `info`) VALUES
+INSERT INTO `videos` (`id`, `name`, `course_id`, `createTime`, `viewNum`, `info`) VALUES
 (1, 'sad1111111', 1, '2018-12-29 00:00:00', 122, 'asdadasdasdsad33333'),
 (2, 'sad1111111', 2, '2018-12-29 00:00:00', 121, 'ddsfsdfsdf'),
 (3, 'sad1111111', 2, '2018-12-29 00:00:00', 121, 'ddsfsdfsdf'),
