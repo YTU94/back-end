@@ -3,7 +3,7 @@ let sql = require('../sql/sql.js');
 
 module.exports = {
   getArticleSorts (req, res) {
-    func.connPool(res, sql.queryAll, 'article_sort', (err, rows) => {
+    func.connPool(res, sql.queryAll, 'faq_categories', (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
   },
