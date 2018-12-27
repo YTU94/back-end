@@ -6,8 +6,8 @@ let video = require('../controls/video');
 let commend = require('../controls/commend');
 
 // article
-router.get('/getArticleSorts', article.getArticleSorts)
-router.post('/getArticleList', article.getArticleList)
+router.get('/api/v1/faq/categories', article.getArticleSorts)
+router.post('/api/v1/faq/category/:category_id/articles', article.getArticleList)
 router.post('/getArticleInfo', article.getArticleInfo)
 
 // course

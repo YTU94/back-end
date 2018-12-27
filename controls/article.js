@@ -8,7 +8,7 @@ module.exports = {
     })
   },
   getArticleList (req, res) {
-    func.connPool(res, sql.queryByPage_Key, ['article', 'sort_id', req.body.id, req.body.page, req.body.page_size], (err, rows) => {
+    func.connPool(res, sql.queryByPage_Key, ['faq_articles', 'category_id', req.params.category_id, req.body.page, req.body.page_size], (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
   },
