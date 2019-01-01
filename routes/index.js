@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+let user = require('../controls/user');
 let article = require('../controls/article');
 let course = require('../controls/course');
 let video = require('../controls/video');
 let commend = require('../controls/commend');
+
+// user
+router.post('/oauth/token', user.login)
 
 // article
 router.get('/api/v1/faq/categories', article.getArticleSorts)
