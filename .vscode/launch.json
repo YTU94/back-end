@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "back-end",
       "program": "${workspaceFolder}\\bin\\www"
     }
   ]

@@ -445,8 +445,8 @@ ms@2.0.0:
 
 mysql@^2.16.0:
   version "2.16.0"
-  resolved "http://r.cnpmjs.org/mysql/download/mysql-2.16.0.tgz#b23b22ab5de44fc2d5d32bd4f5af6653fc45e2ba"
-  integrity sha1-sjsiq13kT8LV0yvU9a9mU/xF4ro=
+  resolved "https://registry.yarnpkg.com/mysql/-/mysql-2.16.0.tgz#b23b22ab5de44fc2d5d32bd4f5af6653fc45e2ba"
+  integrity sha512-dPbN2LHonQp7D5ja5DJXNbCLe/HRdu+f3v61aguzNRQIrmZLOeRoymBYyeThrR6ug+FqzDL95Gc9maqZUJS+Gw==
   dependencies:
     bignumber.js "4.1.0"
     readable-stream "2.3.6"

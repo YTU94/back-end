@@ -16,5 +16,13 @@ module.exports = {
     func.connPool(res, sql.queryByKey, ['article', 'sort_id', req.body.id], (err, rows) => {
       res.json({code: 200, msg: 'ok', data: rows, err: err})
     })
-  }
+  },
+  //个人博客数据拉取
+  getPersonArticleList (req, res) {
+    const offset = parseInt(req.query.page - 1) * parseInt(req.query.page_size) 
+    const offsetEnd = offset + parseInt(req.query.page_size)
+    func.connPool(res, sql.queryByPage, ['wp_posts', offset, offsetEnd], (err, rows) => {
+      res.json({code: 200, msg: 'ok', data: rows, err: err})
+    })
+  },
 }

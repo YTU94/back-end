@@ -3,6 +3,6 @@ module.exports = {
   host            : 'localhost',
   user            : 'root',
   password    : '261011',
-  database     : 'meedu',
+  database     : 'ytu',
   multipleStatements : true  //是否允许执行多条sql语句
 };

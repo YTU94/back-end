@@ -32,4 +32,7 @@ router.post('/video/commendInfo', commend.getVideoCommendInfo)
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Ytu' });
 });
+
+// my article
+router.get('/api/v1/ytu/articles', article.getPersonArticleList)
 module.exports = router;
