@@ -37,7 +37,7 @@ module.exports = {
     const offset = parseInt(req.query.page - 1) * parseInt(req.query.page_size)
     const offsetEnd = offset + parseInt(req.query.page_size)
     const category_id = parseInt(req.query.category_id) || 1
-    const sql = `select * from wp_posts,wp_term_relationships WHERE wp_term_relationships.term_taxonomy_id = ${category_id} AND wp_term_relationships.object_id = wp_posts.ID`
+    const sql = `select wp_posts.*, wp_users.display_name from wp_posts, wp_term_relationships,wp_users WHERE wp_term_relationships.term_taxonomy_id = ${category_id} AND wp_term_relationships.object_id = wp_posts.ID AND wp_users.ID = wp_posts.post_author `
     func.connPool(res, sql, ['wp_posts', offset, offsetEnd], (err, rows) => {
       res.json({
         code: 200,
