@@ -44,7 +44,7 @@ module.exports = {
       LIMIT ${offset}, ${offsetEnd}`
     const countSql = `select count(*) as count from wp_posts, wp_term_relationships,wp_users 
       WHERE wp_term_relationships.term_taxonomy_id = ${category_id} 
-        AND wp_term_relationships.object_id = wp_posts.ID 
+        AND wp_term_relationships.object_id = wp_posts.ID
         AND wp_users.ID = wp_posts.post_author`
     func.connPool(res, sql, ['wp_posts', offset, offsetEnd], (err, rows) => {
       func.connPool(res, countSql, 'wp_posts', (err, count) => {
