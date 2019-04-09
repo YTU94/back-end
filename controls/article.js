@@ -37,13 +37,24 @@ module.exports = {
     const offset = parseInt(req.query.page - 1) * parseInt(req.query.page_size)
     const offsetEnd = offset + parseInt(req.query.page_size)
     const category_id = parseInt(req.query.category_id) || 1
-    const sql = `select wp_posts.*, wp_users.display_name from wp_posts, wp_term_relationships,wp_users WHERE wp_term_relationships.term_taxonomy_id = ${category_id} AND wp_term_relationships.object_id = wp_posts.ID AND wp_users.ID = wp_posts.post_author `
+    const sql = `select wp_posts.*, wp_users.display_name from wp_posts, wp_term_relationships,wp_users 
+      WHERE wp_term_relationships.term_taxonomy_id = ${category_id} 
+        AND wp_term_relationships.object_id = wp_posts.ID 
+        AND wp_users.ID = wp_posts.post_author
+      LIMIT ${offset}, ${offsetEnd}`
+    const countSql = `select count(*) as count from wp_posts, wp_term_relationships,wp_users 
+      WHERE wp_term_relationships.term_taxonomy_id = ${category_id} 
+        AND wp_term_relationships.object_id = wp_posts.ID 
+        AND wp_users.ID = wp_posts.post_author`
     func.connPool(res, sql, ['wp_posts', offset, offsetEnd], (err, rows) => {
-      res.json({
-        code: 200,
-        msg: 'ok',
-        data: rows,
-        err: err
+      func.connPool(res, countSql, 'wp_posts', (err, count) => {
+        res.json({
+          code: 200,
+          msg: 'ok',
+          total: count[0].count,
+          data: rows,
+          err: err
+        })
       })
     })
   },
