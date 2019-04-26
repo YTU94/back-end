@@ -1,6 +1,9 @@
 let func = require('../sql/func');
 let sql = require('../sql/sql.js');
 
+const checkAgrs = function(args) {
+  
+}
 module.exports = {
   getArticleSorts(req, res) {
     func.connPool(res, sql.queryAll, 'faq_categories', (err, rows) => {
@@ -66,6 +69,35 @@ module.exports = {
         code: 200,
         msg: 'ok',
         data: rows
+      })
+    })
+  },
+  // @ytu 获取文章评论
+  getArticleComments(req, res) {
+    const articleId = parseInt(req.query.articleId)
+    const sql = `SELECT*FROM wp_comments WHERE wp_comments.comment_post_ID=${articleId}`
+    func.connPool(res, sql, (err, rows) => {
+      res.json({
+        code: 200,
+        msg: 'ok',
+        data: rows
+      })
+    })
+  },
+  // @ytu 提交评论
+  submitArticleComents(req, res) {
+    const articleId = parseInt(req.body.articleId)
+    const name = req.body.name
+    const email = req.body.email
+    const content = req.body.content
+    const now = new Date()
+    const date = `${now.getFullYear()}-0${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+    const sql = 'INSERT INTO wp_comments (comment_post_ID, comment_date, comment_date_gmt, comment_author, comment_author_email, comment_content) VALUES (?, ?, ?, ?, ?, ?)'
+    func.connPool(res, sql, [articleId, date, date, name, email, content], (err, rows) => {
+      res.json({
+        code: 200,
+        msg: 'ok',
+        data: null
       })
     })
   }

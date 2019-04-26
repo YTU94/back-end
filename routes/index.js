@@ -38,5 +38,6 @@ router.get('/', function (req, res, next) {
 // my article
 router.get('/api/v1/ytu/articles', article.getPersonArticleList)
 router.get('/api/v1/ytu/category', article.getPersonCategoryList)
-
+router.get('/api/v1/ytu/articleComments', article.getArticleComments)
+router.post('/api/v1/ytu/submitArticleComents', article.submitArticleComents)
 module.exports = router
