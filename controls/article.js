@@ -66,6 +66,8 @@ module.exports = {
   getPersonCategoryList(req, res) {
     const sql = "select * from wp_term_taxonomy, wp_terms WHERE wp_term_taxonomy.term_id = wp_terms.term_id and taxonomy = 'category'"
     func.connPool(res, sql, (err, rows) => {
+      // 删除 ·未分类· 类目
+      rows.splice(0, 1)
       res.json({
         code: 200,
         msg: 'ok',
