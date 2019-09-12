@@ -82,7 +82,7 @@ module.exports = {
     func.connPool(res, sql, (err, rows) => {
       res.json({
         code: 200,
-        msg: 'ok',
+        msg: 'ok', 
         data: rows
       })
     })
