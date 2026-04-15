@@ -1,8 +1,8 @@
 module.exports = {
-  connectionLimit: 50,
-  host: 'localhost',
-  user: 'root',
-  password: '261011',
-  database: 'ytuj_cn',
-  multipleStatements: true //是否允许执行多条sql语句
+  connectionLimit: parseInt(process.env.DB_CONNECTION_LIMIT, 10) || 50,
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'ytuj_cn',
+  multipleStatements: false
 };
