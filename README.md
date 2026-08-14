@@ -1,3 +1,5 @@
+
+
 > 一个node后端项目,主要配合[meedu-wxapp](https://github.com/YTU94/meedu-wxapp),也可以自己用于其他项目。
 
 ## 简介
@@ -6,7 +8,7 @@
 
 ## 功能
 - [x] 数据库的连接
-- [x] sql语句进行增删该查
+- [x] sql语句进行增删改查
 - [x] 提供api服务
 
 ## api
